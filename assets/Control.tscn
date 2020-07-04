@@ -1,76 +1,85 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/Game_Over_Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Control2.gd" type="Script" id=1]
 [ext_resource path="res://assets/guy.png" type="Texture" id=2]
+[ext_resource path="res://assets/Game_Over_Regular.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="BitmapFont" id=6]
+[sub_resource type="BitmapFont" id=1]
 
-[sub_resource type="Theme" id=7]
-default_font = SubResource( 6 )
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.901961, 0.894118, 0.705882, 1 )
 
-[sub_resource type="DynamicFont" id=9]
-size = 58
-font_data = ExtResource( 1 )
-fallback/0 = ExtResource( 1 )
+[sub_resource type="DynamicFont" id=4]
+size = 39
+font_data = ExtResource( 3 )
+fallback/0 = ExtResource( 3 )
 
 [node name="Control" type="Control"]
-anchor_left = 0.5
-anchor_top = 0.717
-anchor_right = 0.5
-anchor_bottom = 0.717
 margin_left = -157.0
 margin_top = -160.08
-margin_right = -150.0
-margin_bottom = -131.08
+margin_right = -117.0
+margin_bottom = -120.08
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Control2" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.717
+anchor_right = 0.5
+anchor_bottom = 0.717
+margin_left = -20.0
+margin_top = -28.68
+margin_right = -13.0
+margin_bottom = 0.319992
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control2"]
+
+[node name="Panel" type="Panel" parent="Control2"]
 light_mask = 2
 anchor_left = 4.8
 anchor_top = 4.4
 anchor_right = 4.8
 anchor_bottom = 4.4
-margin_left = -71.9287
-margin_top = 34.0724
-margin_right = 312.071
-margin_bottom = 96.0724
-theme = SubResource( 7 )
-custom_styles/panel = SubResource( 8 )
+margin_left = 125.099
+margin_top = 210.123
+margin_right = 509.098
+margin_bottom = 272.123
+theme = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="guy" type="Sprite" parent="."]
-position = Vector2( 154.751, 238.897 )
-scale = Vector2( 0.210034, 0.156737 )
-z_index = 3
+[node name="guy2" type="Sprite" parent="Control2"]
+position = Vector2( 191.256, 369.923 )
+scale = Vector2( 0.232029, 0.149416 )
+texture = ExtResource( 2 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control2"]
 modulate = Color( 0, 0, 0, 1 )
 self_modulate = Color( 0, 0, 0, 1 )
-anchor_left = 5.769
-anchor_top = 4.612
-anchor_right = 5.769
-anchor_bottom = 4.612
-margin_left = -4.9166
-margin_top = 33.1559
-margin_right = 303.083
-margin_bottom = 89.1559
-custom_fonts/normal_font = SubResource( 9 )
+anchor_left = 49.067
+anchor_top = 12.0
+anchor_right = 49.067
+anchor_bottom = 12.0
+margin_left = -110.975
+margin_top = -5.04498
+margin_right = 197.023
+margin_bottom = 50.955
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
 bbcode_text = "Good morning yotsubee."
-visible_characters = 22
 text = "Good morning yotsubee."
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="guy2" type="Sprite" parent="."]
-position = Vector2( -5.77115, 193.872 )
-scale = Vector2( 0.232029, 0.149416 )
-texture = ExtResource( 2 )
+[connection signal="tween_completed" from="Control2/Tween" to="Control2" method="_on_Tween_tween_completed"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://assets/image3.png" type="Texture" id=1]
+[ext_resource path="res://KinematicBody2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/stairs.gd" type="Script" id=2]
-[ext_resource path="res://assets/tileMap1.tres" type="TileSet" id=3]
-[ext_resource path="res://KinematicBody2D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/image3.png" type="Texture" id=3]
+[ext_resource path="res://assets/tileMap1.tres" type="TileSet" id=4]
+[ext_resource path="res://assets/basicCamera.gd" type="Script" id=5]
 
 [sub_resource type="AudioStreamOGGVorbis" id=1]
 resource_local_to_scene = true
@@ -27,18 +28,25 @@ autoplay = true
 [node name="StaticBody2D" type="StaticBody2D" parent="YSort"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/StaticBody2D"]
-polygon = PoolVector2Array( 0, 16, 0, 240, 384, 240, 384, 0, 0, 0, 0, -8, 392, -8, 392, 248, 384, 248, -8, 248, -8, 0, 0, 0 )
+polygon = PoolVector2Array( 0, 16, 0, 181.38, 56.9321, 180.959, 56.5117, 240, 384, 240, 384, 0, 0, 0, 0, -8, 392, -8, 392, 248, 384, 248, 46.4209, 248, 46.8414, 191.05, -8, 190.63, -8, 0, 0, 0 )
 
-[node name="player" parent="YSort" instance=ExtResource( 4 )]
+[node name="StaticBody2D2" type="StaticBody2D" parent="YSort"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/StaticBody2D2"]
+position = Vector2( -132.047, -104.013 )
+scale = Vector2( 1.84711, 2.64357 )
+polygon = PoolVector2Array( -33.5802, 237.913, 382.141, 238.327, 381.769, -33.5243, -32.4492, -33.1297, -41.5542, -37.1059, 386.44, -37.6336, 386.704, 245.741, -41.7654, 242.203, -42.0094, -36.6287, -32.4492, -33.2888 )
+
+[node name="player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 161.629, 27.7798 )
 collision_mask = 2
 
 [node name="TileMap" type="TileMap" parent="YSort"]
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 48, 48 )
 cell_custom_transform = Transform2D( 48, 0, 0, 48, 0, 0 )
 format = 1
-tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 1, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 262144, 1, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0 )
+tile_data = PoolIntArray( -196612, 3, 0, -196611, 3, 0, -196610, 3, 0, -196609, 3, 0, -262144, 3, 0, -262143, 3, 0, -262142, 3, 0, -262141, 3, 0, -262140, 3, 0, -262139, 3, 0, -262138, 3, 0, -262137, 3, 0, -262136, 3, 0, -262135, 3, 0, -262134, 3, 0, -262133, 3, 0, -131076, 3, 0, -131075, 3, 0, -131074, 4, 0, -131073, 3, 0, -196608, 3, 0, -196607, 3, 0, -196606, 3, 0, -196605, 3, 0, -196604, 3, 0, -196603, 3, 0, -196602, 3, 0, -196601, 3, 0, -196600, 3, 0, -196599, 4, 0, -196598, 3, 0, -196597, 3, 0, -65540, 3, 0, -65539, 3, 0, -65538, 3, 0, -65537, 3, 0, -131072, 3, 0, -131071, 3, 0, -131070, 3, 0, -131069, 3, 0, -131068, 3, 0, -131067, 3, 0, -131066, 4, 0, -131065, 3, 0, -131064, 3, 0, -131063, 3, 0, -131062, 3, 0, -131061, 3, 0, -4, 3, 0, -3, 3, 0, -2, 3, 0, -1, 3, 0, -65536, 3, 0, -65535, 3, 0, -65534, 3, 0, -65533, 3, 0, -65532, 3, 0, -65531, 3, 0, -65530, 3, 0, -65529, 3, 0, -65528, 3, 0, -65527, 3, 0, -65526, 3, 0, -65525, 3, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 0, 65535, 3, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 3, 0, 9, 3, 0, 10, 3, 0, 11, 3, 0, 131068, 3, 0, 131069, 3, 0, 131070, 3, 0, 131071, 3, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 3, 0, 65545, 3, 0, 65546, 3, 0, 65547, 3, 0, 196604, 3, 0, 196605, 3, 0, 196606, 3, 0, 196607, 3, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 3, 0, 131081, 3, 0, 131082, 3, 0, 131083, 3, 0, 262140, 3, 0, 262141, 3, 0, 262142, 3, 0, 262143, 3, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 3, 0, 196617, 4, 0, 196618, 3, 0, 196619, 3, 0, 327676, 3, 0, 327677, 4, 0, 327678, 3, 0, 327679, 3, 0, 262144, 1, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 3, 0, 262153, 3, 0, 262154, 3, 0, 262155, 3, 0, 393212, 3, 0, 393213, 3, 0, 393214, 3, 0, 393215, 3, 0, 327680, 3, 0, 327681, 3, 0, 327682, 3, 0, 327683, 3, 0, 327684, 3, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 3, 0, 458748, 3, 0, 458749, 3, 0, 458750, 3, 0, 458751, 3, 0, 393216, 3, 0, 393217, 3, 0, 393218, 3, 0, 393219, 3, 0, 393220, 3, 0, 393221, 3, 0, 393222, 3, 0, 393223, 3, 0, 393224, 3, 0, 393225, 3, 0, 393226, 3, 0, 393227, 3, 0, 524284, 3, 0, 524285, 3, 0, 524286, 3, 0, 524287, 3, 0, 458752, 4, 0, 458753, 3, 0, 458754, 3, 0, 458755, 3, 0, 458756, 3, 0, 458757, 3, 0, 458758, 3, 0, 458759, 3, 0, 458760, 3, 0, 458761, 3, 0, 458762, 3, 0, 458763, 3, 0, 589820, 3, 0, 589821, 3, 0, 589822, 3, 0, 589823, 3, 0, 524288, 3, 0, 524289, 3, 0, 524290, 3, 0, 524291, 3, 0, 524292, 3, 0, 524293, 3, 0, 524294, 3, 0, 524295, 3, 0, 524296, 3, 0, 524297, 3, 0, 524298, 3, 0, 524299, 3, 0, 655356, 3, 0, 655357, 3, 0, 655358, 3, 0, 655359, 3, 0, 589824, 3, 0, 589825, 3, 0, 589826, 3, 0, 589827, 3, 0, 589828, 3, 0, 589829, 3, 0, 589830, 3, 0, 589831, 4, 0, 589832, 3, 0, 589833, 3, 0, 589834, 3, 0, 589835, 3, 0, 720892, 3, 0, 720893, 3, 0, 720894, 3, 0, 720895, 3, 0, 655360, 3, 0, 655361, 3, 0, 655362, 3, 0, 655363, 3, 0, 655364, 3, 0, 655365, 3, 0, 655366, 3, 0, 655367, 3, 0, 655368, 3, 0, 655369, 3, 0, 655370, 3, 0, 655371, 3, 0 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="YSort"]
 
@@ -47,33 +55,23 @@ position = Vector2( 112, 120 )
 shape = SubResource( 4 )
 
 [node name="image3" type="Sprite" parent="YSort/StaticBody2D3/CollisionShape2D"]
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="Area2D2" type="Area2D" parent="YSort"]
 
 [node name="stairs" type="CollisionShape2D" parent="YSort/Area2D2"]
-position = Vector2( 360.815, 23.468 )
+position = Vector2( 22.9539, 216.07 )
 shape = SubResource( 5 )
 script = ExtResource( 2 )
-nextScenePath = "res://assets/Node2D.tscn"
-targetLocation = "StairExit"
-inverseDirection = true
-
-[node name="Area2D3" type="Area2D" parent="YSort"]
-
-[node name="stairs" type="CollisionShape2D" parent="YSort/Area2D3"]
-position = Vector2( 22.7746, 216.874 )
-shape = SubResource( 5 )
-script = ExtResource( 2 )
-nextScenePath = "res://assets/outside.tscn"
-targetLocation = "StairExit"
+nextScenePath = "res://assets/room3.tscn"
+targetLocation = "StairEntrance"
 
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="StairExit" type="Node2D" parent="Spawns"]
-position = Vector2( 305.181, 26.3072 )
+position = Vector2( -36.0475, 222.738 )
 
-[node name="StairEntrance" type="Node2D" parent="Spawns"]
-position = Vector2( 71.7655, 211.614 )
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 5 )
 [connection signal="body_entered" from="YSort/Area2D2" to="YSort/Area2D2/stairs" method="_on_Stair_body_entered"]
-[connection signal="body_entered" from="YSort/Area2D3" to="YSort/Area2D3/stairs" method="_on_Stair_body_entered"]

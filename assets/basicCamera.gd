@@ -8,6 +8,6 @@ func _ready():
 
 func _process(delta):
 	var newPos = target.position
-	newPos.x = round(newPos.x)
-	newPos.y = round(newPos.y)
+	#newPos.x = round(newPos.x)
+	#newPos.y = round(newPos.y)
 	self.position = newPos

@@ -6,11 +6,11 @@
 [ext_resource path="res://assets/tilemap.png" type="Texture" id=4]
 [ext_resource path="res://assets/stairs.gd" type="Script" id=5]
 
-[sub_resource type="NavigationPolygon" id=1]
+[sub_resource type="NavigationPolygon" id=9]
 vertices = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
-[sub_resource type="TileSet" id=2]
+[sub_resource type="TileSet" id=10]
 0/name = "tilemap.png 0"
 0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
@@ -19,7 +19,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
-0/navigation = SubResource( 1 )
+0/navigation = SubResource( 9 )
 0/shape_offset = Vector2( 0, 0 )
 0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 0/shape_one_way = false
@@ -55,7 +55,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 2/shapes = [  ]
 2/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 24, 24 )
 
 [node name="Node2D" type="Node2D"]
@@ -73,26 +73,27 @@ position = Vector2( 152, 64 )
 collision_mask = 2
 
 [node name="TileMap" type="TileMap" parent="YSort"]
-tile_set = SubResource( 2 )
+tile_set = SubResource( 10 )
 cell_size = Vector2( 48, 48 )
 cell_custom_transform = Transform2D( 48, 0, 0, 48, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 1, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 196608, 0, 0, 196609, 2, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0 )
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="YSort"]
-collision_mask = 2
-
-[node name="stairs" type="CollisionShape2D" parent="YSort/StaticBody2D2"]
-position = Vector2( 360, 24 )
-shape = SubResource( 3 )
-script = ExtResource( 5 )
-
 [node name="StaticBody2D3" type="StaticBody2D" parent="YSort"]
 
 [node name="bed" type="CollisionShape2D" parent="YSort/StaticBody2D3"]
 position = Vector2( 72, 168 )
-shape = SubResource( 3 )
+shape = SubResource( 8 )
+
+[node name="Area2D" type="Area2D" parent="YSort"]
+
+[node name="stairs" type="CollisionShape2D" parent="YSort/Area2D"]
+position = Vector2( 359.624, 24.857 )
+shape = SubResource( 8 )
+script = ExtResource( 5 )
+nextScenePath = "res://assets/room3.tscn"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
+[connection signal="body_entered" from="YSort/Area2D" to="YSort/Area2D/stairs" method="_on_Stair_body_entered"]

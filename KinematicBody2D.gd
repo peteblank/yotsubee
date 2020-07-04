@@ -7,6 +7,13 @@ onready var animationplayer = $AnimationPlayer
 onready var animationtree = $AnimationTree
 onready var animationstate = $AnimationTree.get("parameters/playback")
 
+func _ready():
+	if Global.entry_state != "":
+		var root = get_tree().get_root()
+		var spawn_position = root.get_node("Node2D/Spawns").get_node(Global.entry_state)
+		self.position = spawn_position.position
+		animationtree.set("parameters/idle/blend_position", Global.player_entry_direction)
+
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")

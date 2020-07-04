@@ -2,6 +2,9 @@ extends Node
 
 var current_scene = null
 
+var entry_state = ""
+var player_entry_direction = Vector2(0,0)
+
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() - 1)

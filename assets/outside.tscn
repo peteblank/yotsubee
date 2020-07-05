@@ -12,7 +12,7 @@ data = PoolByteArray( 79, 103, 103, 83, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 34, 69, 14
 loop = true
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 24, 24 )
+extents = Vector2( 30.9286, 26.129 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,7 +27,7 @@ autoplay = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="YSort/StaticBody2D"]
 position = Vector2( 110.875, 229.99 )
-polygon = PoolVector2Array( 12.7026, 10.8001, 77.1299, 10.8001, 80.8756, -59.6203, 161.784, -60.3694, 157.289, 7.05438, 257.676, 7.80353, 259.923, -228.929, 218.72, -229.678, 191.001, -247.658, 64.3943, -247.658, 32.1806, -229.678, -12.7686, -227.431, -14.2669, -13.1728 )
+polygon = PoolVector2Array( -4.875, 9.00999, 80.125, 9.00999, 80.8756, -59.6203, 156.125, -59.99, 154.125, 9.00999, 251.125, 9.00999, 251.125, -229.99, 211.125, -229.99, 187.125, -246.99, 67.125, -246.99, 36.125, -227.99, -4.875, -226.99 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="YSort"]
 
@@ -60,14 +60,13 @@ nextScenePath = "res://assets/room3.tscn"
 targetLocation = "StairEntrance"
 
 [node name="house" type="Sprite" parent="YSort/Area2D2"]
-position = Vector2( 234.681, 111.284 )
-scale = Vector2( 1.04961, 1.0062 )
+position = Vector2( 234, 111 )
 texture = ExtResource( 3 )
 
 [node name="Spawns" type="Node2D" parent="."]
 
 [node name="StairExit" type="Node2D" parent="Spawns"]
-position = Vector2( -36.0475, 222.738 )
+position = Vector2( 229, 259 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 223.078, 222.729 )

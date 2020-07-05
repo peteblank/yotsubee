@@ -1,0 +1,1 @@
+Thanks to "you" for making the scene changing scripts and thanks to kaiemon for makign the yotsuba sprites. 

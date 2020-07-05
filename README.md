@@ -1,6 +1,6 @@
 If this game gets picked here's a rough roadmap I have outlined so we can get started.
 
-1.be able to change avatars with the dialog.
+1. be able to change avatars with the dialog.
 2.be able to buy items from the shopkeeper. 
 3.have a very bare boned fighting system. 
 4.have a pathfinding cat

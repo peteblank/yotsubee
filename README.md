@@ -19,3 +19,9 @@ As far as the code of conduct:
 
 
 lol just kidding. 
+
+**Using the Source on GNU+Linux**
+1. Download [Godot](https://godotengine.org/download/linux)
+2. Unzip .zip file. The file unzips to a binary
+3. Run the binary and select import
+4. To run the project click the play button (F5) in the top right.

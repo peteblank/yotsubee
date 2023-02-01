@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic CMakeFiles/SFML_Project.dir/main.cpp.o -o /home/pete/Documents/SFML-Project-Template/bin/SFML_Project  -lsfml-network -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system 

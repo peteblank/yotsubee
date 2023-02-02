@@ -7,18 +7,29 @@ using namespace std;
 
 int main() {
 
-    /* Code adapted from the SFML 2 "Window" example */
+     sf::Texture texture;
+if (!texture.loadFromFile("mario.png"))
+{
+    // error...
+    cout<<"failed";
+}
+sf::Sprite sprite;
+sprite.setTexture(texture);
 
-    cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
+cout << "Version " << myproject_VERSION_MAJOR << "." << myproject_VERSION_MINOR << endl;
 
-    sf::Window App(sf::VideoMode(800, 600), "SFML_Project");
+    sf::RenderWindow App(sf::VideoMode(800, 600), "SFML_Project");
 
     while (App.isOpen()) {
         sf::Event Event;
+              
         while (App.pollEvent(Event)) {
             if (Event.type == sf::Event::Closed)
-            App.close();
+        
+	App.close();
         }
+	App.draw(sprite);    
+
         App.display();
     }
 }

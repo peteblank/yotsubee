@@ -29,13 +29,14 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "raylib [texture] example - sprite anim");
 
     // NOTE: Textures MUST be loaded after Window initialization (OpenGL context is required)
-    Texture2D scarfy = LoadTexture("home/pete/Documents/yotsubee/src/assets/Yotsuba_SpriteSheet.png");        // Texture loading
-/*
-You need to change pete with whatever your username is, it doesn't load without the full path
+    Texture2D yotsuba = LoadTexture("src/assets/Yotsuba_SpriteSheet.png");        // Texture loading
 
-*/
+    
     Vector2 position = { 350.0f, 280.0f };
-    Rectangle frameRec = { 24.0f, 0.0f, (float)24, (float)scarfy.height/4 };
+    Vector2 origin = { (float)yotsuba.width/6, (float)yotsuba.height/8 };  // Set transform origin to sprite center
+    Rectangle sourceRec = { 0.0f, 0.0f, (float)yotsuba.width/3, (float)yotsuba.height/4 };  // Section of spritesheet to draw
+    Rectangle destRec = { 0.0f, 0.0f, 96.0f, 96.0f };  // Where to draw the sprite on screen. This allows changing the size
+
     int currentFrame = 0;
 
     int framesCounter = 0;
@@ -51,15 +52,20 @@ You need to change pete with whatever your username is, it doesn't load without 
         //----------------------------------------------------------------------------------
         framesCounter++;
 
+	// Update sprite
         if (framesCounter >= (60/framesSpeed))
         {
             framesCounter = 0;
             currentFrame++;
 
-            if (currentFrame > 5) currentFrame = 0;
+            if (currentFrame > 2) currentFrame = 0;
 
-            frameRec.x = (float)currentFrame*(float)scarfy.width/6;
+            sourceRec.x = (float)currentFrame*(float)yotsuba.width/3;
         }
+
+	// Update position
+	destRec.x = position.x;
+	destRec.y = position.y;
 
         // Control frames speed
         if (IsKeyPressed(KEY_RIGHT)) framesSpeed++;
@@ -75,9 +81,9 @@ You need to change pete with whatever your username is, it doesn't load without 
 
             ClearBackground(RAYWHITE);
 
-            DrawTexture(scarfy, 16, 40, WHITE);
-            DrawRectangleLines(16, 40, scarfy.width, scarfy.height, LIME);
-            DrawRectangleLines(6 + (int)frameRec.x, 40 + (int)frameRec.y, (int)frameRec.width, (int)frameRec.height, RED);
+            DrawTexture(yotsuba, 16, 40, WHITE);
+            DrawRectangleLines(16, 40, yotsuba.width, yotsuba.height, LIME);
+            DrawRectangleLines(16 + (int)sourceRec.x, 40 + (int)sourceRec.y, (int)sourceRec.width, (int)sourceRec.height, RED);
 
             DrawText("FRAME SPEED: ", 165, 210, 10, DARKGRAY);
             DrawText(TextFormat("%02i FPS", framesSpeed), 575, 210, 10, DARKGRAY);
@@ -89,7 +95,7 @@ You need to change pete with whatever your username is, it doesn't load without 
                 DrawRectangleLines(250 + 21*i, 205, 20, 20, MAROON);
             }
 
-            DrawTextureRec(scarfy, frameRec, position, WHITE);  // Draw part of the texture
+            DrawTexturePro(yotsuba, sourceRec, destRec, origin, 0.0f, WHITE);
 
             DrawText("(c) Scarfy sprite by Eiden Marsal", screenWidth - 200, screenHeight - 20, 10, GRAY);
 
@@ -99,7 +105,7 @@ You need to change pete with whatever your username is, it doesn't load without 
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    UnloadTexture(scarfy);       // Texture unloading
+    UnloadTexture(yotsuba);       // Texture unloading
 
     CloseWindow();                // Close window and OpenGL context
     //--------------------------------------------------------------------------------------

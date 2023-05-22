@@ -11,7 +11,7 @@
 *
 ********************************************************************************************/
 
-#include "raylib.h"
+#include "../include/raylib.h"
 
 #define MAX_FRAME_SPEED     15
 #define MIN_FRAME_SPEED      1
@@ -29,13 +29,13 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "raylib [texture] example - sprite anim");
 
     // NOTE: Textures MUST be loaded after Window initialization (OpenGL context is required)
-    Texture2D scarfy = LoadTexture("home/pete/Documents/yotsubee/src/assets/Yotsuba_SpriteSheet.png");        // Texture loading
+    Texture2D scarfy = LoadTexture("src/assets/Yotsuba_SpriteSheet.png");        // Texture loading
 /*
-You need to change pete with whatever your username is, it doesn't load without the full path
+fixed the path
 
 */
     Vector2 position = { 350.0f, 280.0f };
-    Rectangle frameRec = { 24.0f, 0.0f, (float)24, (float)scarfy.height/4 };
+    Rectangle frameRec = { (float)scarfy.width, 0.0f, (float)24, (float)scarfy.height/4 };
     int currentFrame = 0;
 
     int framesCounter = 0;
@@ -56,9 +56,9 @@ You need to change pete with whatever your username is, it doesn't load without 
             framesCounter = 0;
             currentFrame++;
 
-            if (currentFrame > 5) currentFrame = 0;
+            if (currentFrame > 2) currentFrame = 0;
 
-            frameRec.x = (float)currentFrame*(float)scarfy.width/6;
+            frameRec.x = (float)currentFrame*(float)scarfy.width/3; 	  	 
         }
 
         // Control frames speed
@@ -75,8 +75,8 @@ You need to change pete with whatever your username is, it doesn't load without 
 
             ClearBackground(RAYWHITE);
 
-            DrawTexture(scarfy, 16, 40, WHITE);
-            DrawRectangleLines(16, 40, scarfy.width, scarfy.height, LIME);
+            DrawTexture(scarfy, 0, 40, WHITE);
+            DrawRectangleLines(0, 40, scarfy.width, scarfy.height, LIME);
             DrawRectangleLines(6 + (int)frameRec.x, 40 + (int)frameRec.y, (int)frameRec.width, (int)frameRec.height, RED);
 
             DrawText("FRAME SPEED: ", 165, 210, 10, DARKGRAY);

@@ -47,7 +47,7 @@ fixed the path
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
-        // Update
+         // Update
         //----------------------------------------------------------------------------------
         framesCounter++;
 
@@ -56,9 +56,18 @@ fixed the path
             framesCounter = 0;
             currentFrame++;
 
-            if (currentFrame > 2) currentFrame = 0;
+            if (currentFrame > 2) 
+            {currentFrame = 0;
+            frameRec.y+=scarfy.height/4;
+            if (frameRec.y >scarfy.height/4*3)
+            {
+                frameRec.y = 0;
+            }
+            }
 
-            frameRec.x = (float)currentFrame*(float)scarfy.width/3; 	  	 
+             	  	 
+	currentFrame %= 3;
+	frameRec.x = (float)currentFrame * (float)scarfy.width / 3;	  	 
         }
 
         // Control frames speed

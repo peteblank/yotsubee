@@ -22,7 +22,7 @@
 int main(void)
 {
     // Initialization
-    //--------------------------------------------------------------------------------------
+
     const int screenWidth = 800;
     const int screenHeight = 450;
 
@@ -46,7 +46,6 @@ int main(void)
     int framesSpeed = 8;            // Number of spritesheet frames shown by second
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
-    //--------------------------------------------------------------------------------------
 
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
@@ -89,10 +88,8 @@ int main(void)
 
         if (framesSpeed > MAX_FRAME_SPEED) framesSpeed = MAX_FRAME_SPEED;
         else if (framesSpeed < MIN_FRAME_SPEED) framesSpeed = MIN_FRAME_SPEED;
-        //----------------------------------------------------------------------------------
 
         // Draw
-        //----------------------------------------------------------------------------------
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
@@ -100,7 +97,6 @@ int main(void)
             DrawTexture(scarfy, 0, 40, WHITE);
             DrawRectangleLines(0, 40, scarfy.width, scarfy.height, LIME);
             DrawRectangleLines(6 + (int)frameRec.x, 40 + (int)frameRec.y, (int)frameRec.width, (int)frameRec.height, RED);
-=======
             DrawTexture(yotsuba, 16, 40, WHITE);
             DrawRectangleLines(16, 40, yotsuba.width, yotsuba.height, LIME);
             DrawRectangleLines(16 + (int)sourceRec.x, 40 + (int)sourceRec.y, (int)sourceRec.width, (int)sourceRec.height, RED);
@@ -120,15 +116,12 @@ int main(void)
             DrawText("(c) Scarfy sprite by Eiden Marsal", screenWidth - 200, screenHeight - 20, 10, GRAY);
 
         EndDrawing();
-        //----------------------------------------------------------------------------------
     }
 
     // De-Initialization
-    //--------------------------------------------------------------------------------------
     UnloadTexture(yotsuba);       // Texture unloading
 
     CloseWindow();                // Close window and OpenGL context
-    //--------------------------------------------------------------------------------------
 
     return 0;
 }

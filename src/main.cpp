@@ -34,7 +34,7 @@ int main(void)
 
     
     Vector2 position = { 350.0f, 280.0f };
-    //Rectangle frameRec = { (float)scarfy.width, 0.0f, (float)24, (float)scarfy.height/4 };
+    Rectangle frameRec = { (float)yotsuba.width, 0.0f, (float)24, (float)yotsuba.height/4 };
 
     Vector2 origin = { (float)yotsuba.width/6, (float)yotsuba.height/8 };  // Set transform origin to sprite center
     Rectangle sourceRec = { 0.0f, 0.0f, (float)yotsuba.width/3, (float)yotsuba.height/4 };  // Section of spritesheet to draw

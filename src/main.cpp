@@ -28,13 +28,13 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "raylib [texture] example - sprite anim");
 
-    Texture2D scarfy = LoadTexture("src/assets/Yotsuba_SpriteSheet.png");        // Texture loading
+    //Texture2D scarfy = LoadTexture("src/assets/Yotsuba_SpriteSheet.png");        // Texture loading
 
     Texture2D yotsuba = LoadTexture("src/assets/Yotsuba_SpriteSheet.png");        // Texture loading
 
     
     Vector2 position = { 350.0f, 280.0f };
-    Rectangle frameRec = { (float)scarfy.width, 0.0f, (float)24, (float)scarfy.height/4 };
+    //Rectangle frameRec = { (float)scarfy.width, 0.0f, (float)24, (float)scarfy.height/4 };
 
     Vector2 origin = { (float)yotsuba.width/6, (float)yotsuba.height/8 };  // Set transform origin to sprite center
     Rectangle sourceRec = { 0.0f, 0.0f, (float)yotsuba.width/3, (float)yotsuba.height/4 };  // Section of spritesheet to draw
@@ -62,8 +62,10 @@ int main(void)
 
             if (currentFrame > 2) 
             {currentFrame = 0;
-            frameRec.y+=scarfy.height/4;
-            if (frameRec.y >scarfy.height/4*3)
+            //frameRec.y+=scarfy.height/4;
+            //if (frameRec.y >scarfy.height/4*3)
+	     frameRec.y+=yotsuba.height/4;
+            if (frameRec.y >yotsuba.height/4*3)
             {
                 frameRec.y = 0;
             }
@@ -71,7 +73,7 @@ int main(void)
 
              	  	 
 	currentFrame %= 3;
-	frameRec.x = (float)currentFrame * (float)scarfy.width / 3;	  	 
+	//frameRec.x = (float)currentFrame * (float)scarfy.width / 3;	
 
             if (currentFrame > 2) currentFrame = 0;
 
@@ -94,8 +96,8 @@ int main(void)
 
             ClearBackground(RAYWHITE);
 
-            DrawTexture(scarfy, 0, 40, WHITE);
-            DrawRectangleLines(0, 40, scarfy.width, scarfy.height, LIME);
+            //DrawTexture(scarfy, 0, 40, WHITE);
+            //DrawRectangleLines(0, 40, scarfy.width, scarfy.height, LIME);
             DrawRectangleLines(6 + (int)frameRec.x, 40 + (int)frameRec.y, (int)frameRec.width, (int)frameRec.height, RED);
             DrawTexture(yotsuba, 16, 40, WHITE);
             DrawRectangleLines(16, 40, yotsuba.width, yotsuba.height, LIME);

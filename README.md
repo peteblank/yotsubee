@@ -5,6 +5,11 @@
 # A LOT LESS OF A HASSLE
 
 # ALSO MAKE SURE SMT VIRTUALIZATION IS ENABLED ON THE BIOS OR USE VISUAL STUDIO
+# Note
+
+I've actually tried running it on wsl and while it compiles it won't render the window...
+
+I've noticed that the raylib.cpp has been updated and even has hpp instead of regular h header files now and doesn't have the vendor bloat folder so this might be temporary.
 
 # Raylib C++ Starter
 The Raylib C++ Starter kit is a template project that provides a simple starter template for the [raylib](https://github.com/raysan5/raylib) game tools library incorporating the [raylib-cpp](https://github.com/robloach/raylib-cpp) C++ bindings and using [Make](https://www.gnu.org/software/make/) for building. The starter kit can automatcially clone down raylib and the bindings, compile them, and setup the project for separate compilation using a static library.
